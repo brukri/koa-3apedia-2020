@@ -20,11 +20,11 @@ Introduction to node.js micro services with koa.js
    "firstName": "Hans",
    "lastName": "Meier",
    "address": {
-     "street": "Bulevar Mihajla Pupina",
-     "streetNo": "6",
-     "zip": 11000,
-     "city": "Belgrade",
-     "country": "Serbia"
+     "street": "Aargauerstrasse",
+     "streetNo": "250",
+     "zip": 8048,
+     "city": "Zurich",
+     "country": "Switzerland"
    }
  }'`
  
