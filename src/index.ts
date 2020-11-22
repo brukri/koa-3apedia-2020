@@ -1,14 +1,20 @@
 import Koa from 'koa';
 import Router from 'koa-router';
 
-import api from './api';
+import api from './customer/api';
 import json from 'koa-json';
 import bodyParser from 'koa-bodyparser';
 import logger from 'koa-logger';
-import CustomerError from './customer-error';
+import CustomerError from './customer/customer-error';
+
+const SERVER_PORT = 8080;
 
 const app = new Koa();
 const router = new Router();
+
+app.use(logger());
+app.use(json());
+app.use(bodyParser());
 
 app.use(async (ctx, next) => {
     const start = Date.now();
@@ -33,15 +39,11 @@ app.use(async (ctx, next) => {
     }
 });
 
-app.use(logger());
-app.use(json());
-app.use(bodyParser());
-
 router.use('/customer', api.routes(), api.allowedMethods());
 
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.listen(8080, () => {
-    console.log('Server started.');
+app.listen(SERVER_PORT, () => {
+    console.log(`Server started on port: ${SERVER_PORT}`);
 });
